@@ -1,10 +1,12 @@
+## NOTE: see this [repository](https://github.com/yudintsevegor/wheather_informer), please. i took a mistake
+
 # [Умный сервис прогноза погоды (Задача со звездочкой)](https://www.notion.so/03f6716315e04acea3023766e5f2cc0e)
 
 ## Architecture
 
 ### Language and tools
 * [Go](https://golang.org/)
-* [Wrapper for Tg-Bot-API](gopkg.in/telegram-bot-api.v4)
+* [Wrapper for Tg-Bot-API](https://gopkg.in/telegram-bot-api.v4)
 * [heroku](https://dashboard.heroku.com/) for  deployment
 
 ### UI
