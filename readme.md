@@ -133,3 +133,8 @@ I use [samples](http://bulk.openweathermap.org/sample/) for getting information 
 ### Example
 
 You can watch a video with usage [video](https://cloud.mail.ru/public/3rVy/2SyNqqFMd)
+
+### TODO
+
+* Add database for dialog with user
+* Add opportunity to ask only current weather/hourly weather for period/etc

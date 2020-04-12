@@ -1,11 +1,11 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"log"
 	"net/http"
 	"strings"
+	"sync"
 
 	"weather_informer/config"
 
@@ -15,15 +15,16 @@ import (
 type weatherInformer struct {
 	bot                *tgbotapi.BotAPI
 	apiKey             string
-	locations          map[string]coordinate
+	locations          map[string]coordinates
 	supportedLocations []string
 
 	url     string
+	mu      sync.Mutex
 	isDebug bool
 }
 
 func newWeatherInformer(
-	bot *tgbotapi.BotAPI, cfg *config.Config, locations map[string]coordinate, supportedLocations []string,
+	bot *tgbotapi.BotAPI, cfg *config.Config, locations map[string]coordinates, supportedLocations []string,
 ) weatherInformer {
 	return weatherInformer{
 		bot:                bot,
@@ -89,11 +90,11 @@ const hoursInHalfDay = 12
 var isCurrentWeatherDay = true
 
 func (w weatherInformer) handleMessage(message *tgbotapi.Message) (string, error) {
-	coordinate, ok := w.locations[strings.ToLower(message.Text)]
-	if !ok {
+	coordinate, err := w.getCoordinates(message.Text)
+	if err != nil {
 		text := fmt.Sprintf(`unknown location: '%v'; use list '%v'`, message.Text, w.url+locationList)
 
-		return text, errors.New("unknown location")
+		return text, err
 	}
 
 	response, err := w.getWeatherByAPI(w.apiKey, coordinate)
