@@ -4,7 +4,7 @@
 
 ### Language and tools
 * [Go](https://golang.org/)
-* [Wrapper for Tg-Bo-API]("gopkg.in/telegram-bot-api.v4")
+* [Wrapper for Tg-Bot-API](gopkg.in/telegram-bot-api.v4)
 * [heroku](https://dashboard.heroku.com/) for  deployment
 
 ### UI
