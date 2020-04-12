@@ -53,7 +53,7 @@ func doRequest(url string) ([]byte, error) {
 const layout = "January 2, 15:04 MST"
 
 const textWeather = `
-	Time: %v
+	DateTime: %v
 
 	Weather: %v
 	Temperature: %v °C,
